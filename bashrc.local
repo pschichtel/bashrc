@@ -1,0 +1,9 @@
+
+if [[ $- == *i* && -d /etc/bashrc.local.d ]]
+then
+	for script in /etc/bashrc.local.d/*.sh; do
+		test -r "$script" && . "$script"
+	done
+	unset script
+fi
+
