@@ -14,7 +14,9 @@ cleanup() {
     then
         sudo pacman -Rs "${packages[@]}"
     else
-        echo "All clean!"
+        echo "Pacman all clean!"
     fi
+    flatpak --unused uninstall
+    docker image prune
 }
 
