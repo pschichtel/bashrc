@@ -1,9 +1,10 @@
 alias vnc_connect='x11vnc -pointer_mode 3 -geometry 1920x1080 -connect '
 
 upgrade() {
-    trizen -Syu
+    sudo pacman -Syu
+    trizen -Syua
     flatpak update -y
-    trizen -Fy
+    sudo pacman -Fy
     fwupdmgr refresh
     fwupdmgr update
 }
@@ -16,7 +17,11 @@ cleanup() {
     else
         echo "Pacman all clean!"
     fi
+    paccache -r -k 1
     flatpak --unused uninstall
-    docker image prune
+    if [[ ! -z "$(which docker)" ]]
+    then
+        docker image prune
+    fi
 }
 

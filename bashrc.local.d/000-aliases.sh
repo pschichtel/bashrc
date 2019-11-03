@@ -9,9 +9,7 @@ alias "l=ls $LS_OPTIONS -lA"
 GREP_OPTIONS="--color=auto"
 alias "grep=grep $GREP_OPTIONS"
 
-alias "top=htop"
-
-export EDITOR=/usr/bin/editor
+export EDITOR=/usr/bin/vim
 
 ncs() {
     local host="${1?param missing - host}"
