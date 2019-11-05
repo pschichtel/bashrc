@@ -22,10 +22,10 @@ cleanup() {
         echo "Pacman all clean!"
     fi
     paccache -r -k 1
-    flatpak --unused uninstall
+    flatpak --unused uninstall -y
     if [[ ! -z "$(which docker)" ]]
     then
-        docker image prune
+        docker image prune --force
     fi
 }
 
