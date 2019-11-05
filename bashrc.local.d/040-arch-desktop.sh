@@ -1,5 +1,9 @@
 alias vnc_connect='x11vnc -pointer_mode 3 -geometry 1920x1080 -connect '
 
+update_mirrors() {
+    sudo reflector --age 6 --country "${1:-DE}" --score 5 --save /etc/pacman.d/mirrorlist
+}
+
 upgrade() {
     sudo pacman -Syu
     trizen -Syua
