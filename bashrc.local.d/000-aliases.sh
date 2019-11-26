@@ -9,6 +9,8 @@ alias "l=ls $LS_OPTIONS -lA"
 GREP_OPTIONS="--color=auto"
 alias "grep=grep $GREP_OPTIONS"
 
+alias track="watch -n 1"
+
 export EDITOR=/usr/bin/vim
 
 ncs() {
