@@ -1,7 +1,7 @@
 # History settings
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
-export HISTIGNORE='reboot:poweroff'
+export HISTIGNORE='reboot:poweroff:exit:logout:clear'
 shopt -s histappend
 
 if [ "$(basename "$SHELL" 2>/dev/null)" = 'bash' ]
