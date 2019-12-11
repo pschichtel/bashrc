@@ -19,3 +19,7 @@ ncs() {
     openssl s_client -servername "$host" -connect "$host:$port"
 }
 
+rscp() {
+    rsync -P -e ssh "$@"
+}
+
