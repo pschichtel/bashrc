@@ -1,10 +1,8 @@
 # History settings
 export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
+export HISTIGNORE='reboot:poweroff'
 shopt -s histappend
-
-# History size
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 if [ "$(basename "$SHELL" 2>/dev/null)" = 'bash' ]
 then
