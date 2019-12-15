@@ -18,10 +18,19 @@ fi
 set horizontal-scroll-mode on
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if [ -x /usr/bin/lesspipe ]
+then
+    eval "$(SHELL=/bin/sh lesspipe)"
+fi
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors ]
+then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+if tty | grep -q tty
+then
+    export TMOUT=300
 fi
 
