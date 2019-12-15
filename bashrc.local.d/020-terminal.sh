@@ -1,3 +1,6 @@
+# readline
+export INPUTRC=/etc/inputrc.local
+
 # History settings
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
