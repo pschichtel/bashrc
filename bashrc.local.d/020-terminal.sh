@@ -5,10 +5,12 @@ export INPUTRC=/etc/inputrc.local
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 export HISTIGNORE='reboot:poweroff:exit:logout:clear'
-shopt -s histappend
 
+# bash specifics
 if [ "$(basename "$SHELL" 2>/dev/null)" = 'bash' ]
 then
+    shopt -s histappend
+
     # update the values of LINES and COLUMNS.
     shopt -s checkwinsize
 
