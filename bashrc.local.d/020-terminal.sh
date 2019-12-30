@@ -5,19 +5,14 @@ export INPUTRC=/etc/inputrc.local
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 export HISTIGNORE='reboot:poweroff:exit:logout:clear'
+shopt -s histappend
 
-# bash specifics
-if [ "$(basename "$SHELL" 2>/dev/null)" = 'bash' ]
-then
-    shopt -s histappend
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
-    # update the values of LINES and COLUMNS.
-    shopt -s checkwinsize
-
-    # If set, the pattern "**" used in a pathname expansion context will
-    # match all files and zero or more directories and subdirectories.
-    shopt -s globstar
-fi
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
 
 # Enable proper long input line wrapping
 set horizontal-scroll-mode on
