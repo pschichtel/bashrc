@@ -67,9 +67,6 @@ alias_completion() {
     source "$tmp_file" && rm -f "$tmp_file"
 }
 
-if [ "$(basename "$SHELL" 2>/dev/null)" = 'bash' ]
-then
-    alias_completion
-    unset -f alias_completion
-fi
+alias_completion
+unset -f alias_completion
 
