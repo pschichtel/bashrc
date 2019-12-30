@@ -26,7 +26,7 @@ alias_completion() {
         # (leveraging that eval errs out if $alias_args contains unquoted shell metacharacters)
         eval "local alias_arg_words; alias_arg_words=($alias_args)" 2>/dev/null || continue
         # avoid expanding wildcards
-        echo -n "$alias_args" | read -a alias_arg_words
+        read -a alias_arg_words <<< "$alias_args"
 
         # skip alias if there is no completion function triggered by the aliased command
         if [[ ! " ${completions[*]} " =~ " $alias_cmd " ]]; then
