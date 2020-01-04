@@ -4,7 +4,7 @@ export INPUTRC=/etc/inputrc.local
 # History settings
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
-export HISTIGNORE='reboot:poweroff:exit:logout:clear'
+export HISTIGNORE='reboot:poweroff:exit:logout:clear:*--yes-i-really-really-mean-it*:*--yes-i-really-mean-it*'
 shopt -s histappend
 
 # update the values of LINES and COLUMNS.
