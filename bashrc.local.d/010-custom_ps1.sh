@@ -22,7 +22,7 @@ build_ps1() {
     local failure="${lred}"'\342\234\227'   # cross:      ✗
 
     local result="\$(if [ \"\$?\" = '0' ]; then echo '${success}'; else echo '${failure}'; fi)"
-    local path="${cyan}\$(sed 's:/:${dgray}/${cyan}:g' <<< '\w' | sed 's/^~/${lgreen}~/g')"
+    local path="${cyan}\$(sed 's:/:${dgray}/${cyan}:g' <<< \"\w\" | sed 's/^~/${lgreen}~/g')"
 
     if [ "$UID" = '0' ]
     then
