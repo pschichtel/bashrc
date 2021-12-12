@@ -4,7 +4,7 @@ set -eu
 
 here="$(dirname "${BASH_SOURCE[0]}")"
 
-sources=("bash.bashrc" "bashrc.local" "bashrc.local.d" "inputrc.local")
+sources=("bash.bashrc" "bashrc.local" "bashrc.local.d" "inputrc.local" "modules-load.d")
 
 for src in "${sources[@]}"
 do
