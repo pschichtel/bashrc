@@ -7,7 +7,14 @@ update_mirrors() {
 
 upgrade() {
     sudo pacman -Syu
-    trizen -Syua
+    if [ -n "$(which trizen 2> /dev/null)" ]
+    then
+        trizen -Syua
+    fi
+    if [ -n "$(which yay 2> /dev/null)" ]
+    then
+        yay -Syua
+    fi
     flatpak update -y
     sudo pacman -Fy
     fwupdmgr refresh
