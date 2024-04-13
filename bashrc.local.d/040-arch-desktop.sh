@@ -37,3 +37,10 @@ cleanup() {
     fi
 }
 
+compress-pdf() {
+    local input="${1?no input}"
+    local output="${2?no output}"
+
+    shrinkpdf -r 150 -o "$output" "$input"
+}
+
