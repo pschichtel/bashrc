@@ -1,13 +1,28 @@
 #!/usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
 here="$(dirname "${BASH_SOURCE[0]}")"
+export GIT_DIR="$here/.git"
+export GIT_WORK_TREE="$here"
+machine_id="$(< /etc/machine-id)"
 
-sources=("bash.bashrc" "bashrc.local" "bashrc.local.d" "inputrc.local" "modules-load.d")
+perform_install() {
+    local from="${1?no from!}"
+    local to="${2?no to}"
+    shift 2
 
-for src in "${sources[@]}"
-do
-    sudo cp -va "${here}/${src}" /etc/
-done
+    if ! [ -d "$from" ]
+    then
+        return 0
+    fi
+
+    find "$from" -type f -exec "$@" bash "$here/install-file.sh" "$from" "$to" "{}" \;
+}
+
+perform_install "$here/global" "/" sudo -E
+perform_install "$here/$machine_id/global" "/" sudo -E
+perform_install "$here/user" "$HOME"
+perform_install "$here/$machine_id/user" "$HOME"
+
 
