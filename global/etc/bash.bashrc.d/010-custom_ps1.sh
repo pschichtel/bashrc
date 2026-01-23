@@ -1,4 +1,5 @@
-build_ps1() {
+__build_ps1() {
+    local exit_status="$?"
 
     local black='\[\033[00;30m\]'
     local blue='\[\033[00;34m\]'
@@ -18,10 +19,12 @@ build_ps1() {
     local white='\[\033[01;37m\]'
     local reset='\[\033[00;00m\]'
     
-    local success="${lgreen}"'\342\234\223' # check-mark: ✓
-    local failure="${lred}"'\342\234\227'   # cross:      ✗
+    if [ "$exit_status" = '0' ]; then
+        local result="${dgray}$exit_status"
+    else
+        local result="${lred}$exit_status"
+    fi
 
-    local result="\$(if [ \"\$?\" = '0' ]; then echo '${success}'; else echo '${failure}'; fi)"
     local path="${cyan}\$(sed 's:/:${dgray}/${cyan}:g' <<< \"\w\" | sed 's/^~/${lgreen}~/g')"
 
     if [ "$UID" = '0' ]
@@ -34,10 +37,8 @@ build_ps1() {
     local host="${lcyan}"'\h'
     local suffix="${green}"'$'"${reset} "
     
-    echo -n " ${result} ${user}${separator}${host} ${path} ${suffix}"
+    PS1=" ${result} ${user}${separator}${host} ${path} ${suffix}"
 }
 
-PS1="$(build_ps1)"
-
-unset -f build_ps1
+PROMPT_COMMAND="__build_ps1"
 
